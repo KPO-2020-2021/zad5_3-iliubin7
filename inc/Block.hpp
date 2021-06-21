@@ -5,15 +5,16 @@
 #include <fstream>
 #include <vector>
 #include <memory>
+#include "Scene_object.hpp"
 /*!
 * \file Block.hpp
 *
 */
 
-/*! \class Block
+/*! \class Block (dziedziczy klas Scene_object)
 *
 */
-class Block
+class Block : public Scene_object
 {
  /*!
  * Pola klasy Block sa protected dlatego, zeby byly widoczne w klasach pochodnych.

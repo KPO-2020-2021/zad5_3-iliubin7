@@ -3,6 +3,7 @@
 #include "Cuboid.hpp"
 #include "Prism.hpp"
 #include "lacze_do_gnuplota.hpp"
+#include "Scene_object.hpp"
 #include <unistd.h> // biblioteka dla usleep
 #define TIME 20000
 /*!
@@ -10,10 +11,10 @@
 *
 */
 
-/*! \class Dron
+/*! \class Dron: dziedziczy class Scene_object.
 *
 */
-class Dron
+class Dron : public Scene_object
 {
     std::vector<Vector3D> dron_way;
     PzG::LaczeDoGNUPlota &Lacze;
@@ -54,6 +55,7 @@ public:
   * Konstruktor parametryczny klasy Dron
   */
   Dron(int id,PzG::LaczeDoGNUPlota &Lacze,Vector3D position);
+  std::string get_name(){}
   /*!
   * Metoda dla unoszenia drona.
   * Argumenty:

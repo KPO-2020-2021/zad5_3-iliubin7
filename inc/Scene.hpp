@@ -12,6 +12,7 @@
 #include "Plane.hpp"
 #include <list>  // dla listy
 #include <memory> // dla wskaznikow wspoldzielonych
+#include "Scene_object.hpp"
 
 #define N 2
 /*!
@@ -25,9 +26,9 @@
 class Scene
 {
  /*!
- * Lista obiektow typu Block
+ * Lista obiektow Sceny
  */
- std::list<std::shared_ptr<Block>> List_of_elements;
+ std::list<std::shared_ptr<Scene_object>> List_of_elements;
  PzG::LaczeDoGNUPlota Lacze;
  /*!
  * Lista obiektow typu Dron

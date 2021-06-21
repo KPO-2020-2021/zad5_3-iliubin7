@@ -28,7 +28,7 @@
   List_of_elements.push_front(std::make_shared<Plane>(cent, 100, 50, 100, "../datasets/Element" + std::to_string(nr_elem) + ".dat"));
   nr_elem++;
   }
-  for (std::list<std::shared_ptr<Block>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
+  for (std::list<std::shared_ptr<Scene_object>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
   {
     Lacze.DodajNazwePliku((*a)->get_name().c_str());
     (*a)->write_to_file();
@@ -40,6 +40,7 @@
   {
     double position[3] = {(double)(rand() % 440 - 220), (double)(rand() % 440 - 220), 25};
     List_of_drons.push_front(std::make_shared<Dron>(i, Lacze, Vector3D(position))) ;
+    List_of_elements.push_front(*List_of_drons.begin());
     (*List_of_drons.begin())->write_to_file();
     nr_dron++;
   }
@@ -123,6 +124,7 @@
 {
   double postition[3] = {(double)(rand() % 440 - 220), (double)(rand() % 440 - 220), 25};
   List_of_drons.push_front(std::make_shared<Dron>(nr_dron, Lacze, Vector3D(postition)));
+  List_of_elements.push_front(*List_of_drons.begin());
   (*List_of_drons.begin())->write_to_file();
 }
  }
@@ -130,7 +132,7 @@
   case 'u':
   {
     int i = 0;
-    for (std::list<std::shared_ptr<Block>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
+    for (std::list<std::shared_ptr<Scene_object>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
     {
       cout << i << ": " << (*a)->get_name() << endl;
       i++;
@@ -139,7 +141,7 @@
 
     int nr;
     cin >> nr;
-    std::list<std::shared_ptr<Block>>::const_iterator a = List_of_elements.begin();
+    std::list<std::shared_ptr<Scene_object>>::const_iterator a = List_of_elements.begin();
 
     for (int j = 0; j < nr; j++)
     {
