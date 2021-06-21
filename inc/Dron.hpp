@@ -14,7 +14,7 @@
 /*! \class Dron: dziedziczy class Scene_object.
 *
 */
-class Dron : public Scene_object
+class Dron : public Scene_object, public std::enable_shared_from_this<Dron>
 {
     std::vector<Vector3D> dron_way;
     PzG::LaczeDoGNUPlota &Lacze;
@@ -50,12 +50,16 @@ class Dron : public Scene_object
     * W tym polu definiuje zmienna, potrzebna dla rozroznienia miedzy soba dronow, stworzonych w jednej przestrzeni
     */
     int id; 
+    /*! 
+    * Promien drona.
+    */
+    double radius_of_dron;
 public:
   /*!
   * Konstruktor parametryczny klasy Dron
   */
   Dron(int id,PzG::LaczeDoGNUPlota &Lacze,Vector3D position);
-  std::string get_name(){}
+  std::string get_name()const{}
   /*!
   * Metoda dla unoszenia drona.
   * Argumenty:
@@ -112,4 +116,7 @@ int get_id()
  {
    return id; 
  }
+ bool check_collision(shared_ptr <Scene_object> ob);
+
+ Vector3D get_center() const;
 }; 

@@ -73,3 +73,8 @@ void Block::write_to_file()
     file << center - trans_cen << std::endl<< std::endl;
     file.close();
 }
+
+double Block::radius()
+ {
+     return sqrt(pow(center[0] - vertex[0][0], 2) + pow(center[1] - vertex[1][1], 2) + pow(center[2] - vertex[2][2], 2));
+ }

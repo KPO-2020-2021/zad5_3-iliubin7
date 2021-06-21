@@ -57,4 +57,8 @@ class Block : public Scene_object
  * Metoda do zapisu danych bryly.
  */
  void write_to_file();
+ /*!
+ * Metoda do zapisu danych bryly.
+ */
+ double radius();
 };

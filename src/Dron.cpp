@@ -13,6 +13,7 @@ Dron::Dron(int id, PzG::LaczeDoGNUPlota &Lacze, Vector3D position) : Lacze(Lacze
     for (int i = 0; i < 4; i++)
         Lacze.DodajNazwePliku(oryg_rotor[i].get_name().c_str());
     copy = orginal;
+    radius_of_dron = copy.radius();
 
     copy.translate(position);
     for (int i = 0; i < 4; i++)
@@ -327,3 +328,24 @@ void Dron::del_obj()
     for (int i = 0; i < 4; i++)
         Lacze.UsunNazwePliku(oryg_rotor[i].get_name().c_str());
   }
+ bool Dron::check_collision(shared_ptr <Scene_object> ob)
+ {
+    std::shared_ptr<Dron> self = shared_from_this();
+     if (ob != self) // zeby nie wykrywalo kolizje samego ze soba.
+    {
+
+        Vector3D center_of_dron = copy.get_center();
+        Vector3D center_of_object = ob->get_center();
+        double l = sqrt(pow(center_of_dron[0] - center_of_object[0], 2) + pow(center_of_dron[1] - center_of_object[1], 2) + pow(center_of_dron[2] - center_of_object[2], 2));
+        if (radius_of_dron + ob->radius() >= l)
+        {
+            return true;
+        }
+    }
+    return false;
+ }
+
+ Vector3D Dron::get_center() const
+ {
+   return copy.get_center();
+ }
