@@ -349,3 +349,8 @@ void Dron::del_obj()
  {
    return copy.get_center();
  }
+
+ double Dron::radius()
+ {
+     return copy.radius();
+ }

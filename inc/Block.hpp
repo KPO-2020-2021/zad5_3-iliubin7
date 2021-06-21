@@ -11,10 +11,10 @@
 *
 */
 
-/*! \class Block (dziedziczy klas Scene_object)
+/*! \class Block - dziedziczy klas Scene_object, klas szablonowy std::enable_shared_from_this<Block>.
 *
 */
-class Block : public Scene_object
+class Block : public Scene_object, public std::enable_shared_from_this<Block>
 {
  /*!
  * Pola klasy Block sa protected dlatego, zeby byly widoczne w klasach pochodnych.
@@ -58,7 +58,14 @@ class Block : public Scene_object
  */
  void write_to_file();
  /*!
- * Metoda do zapisu danych bryly.
+ * Metoda dla wykrywania kolizji.
+ * Zwraca:
+ * 1 - gdy, zostala wykryta kolizja (ladowisko niedostepne),
+ * 0 - gdy nie ma kolizji (ladowisko dostepne).
+ */
+ bool check_collision(shared_ptr <Scene_object> ob);
+ /*!
+ * Metoda zwracaja promien bryly.
  */
  double radius();
 };

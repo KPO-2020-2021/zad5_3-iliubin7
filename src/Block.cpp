@@ -73,7 +73,23 @@ void Block::write_to_file()
     file << center - trans_cen << std::endl<< std::endl;
     file.close();
 }
+bool Block::check_collision(shared_ptr<Scene_object> ob)
+{
+    std::shared_ptr<Block> self = shared_from_this();
 
+    if (ob != self)
+    {
+
+        Vector3D block_center= get_center();
+        Vector3D object_center = ob->get_center();
+        double l = sqrt(pow(block_center[0] - object_center[0], 2) + pow(block_center[1] - object_center[1], 2) + pow(block_center[2] - object_center[2], 2));
+        if (radius() + ob->radius() >= l)
+        {
+            return true;
+        }
+    }
+    return false;
+}
 double Block::radius()
  {
      return sqrt(pow(center[0] - vertex[0][0], 2) + pow(center[1] - vertex[1][1], 2) + pow(center[2] - vertex[2][2], 2));

@@ -11,7 +11,7 @@
 *
 */
 
-/*! \class Dron: dziedziczy class Scene_object.
+/*! \class Dron: dziedziczy class Scene_object, klas szablonowy std::enable_shared_from_this<Block>.
 *
 */
 class Dron : public Scene_object, public std::enable_shared_from_this<Dron>
@@ -59,7 +59,6 @@ public:
   * Konstruktor parametryczny klasy Dron
   */
   Dron(int id,PzG::LaczeDoGNUPlota &Lacze,Vector3D position);
-  std::string get_name()const{}
   /*!
   * Metoda dla unoszenia drona.
   * Argumenty:
@@ -116,7 +115,26 @@ int get_id()
  {
    return id; 
  }
+  /*!
+ * Metoda zwracajaca obiekt drona. 
+ * Zwraca:
+ * 1 - gdy, zostala wykryta kolizja (ladowisko niedostepne),
+ * 0 - gdy nie ma kolizji (ladowisko dostepne).
+ */
  bool check_collision(shared_ptr <Scene_object> ob);
-
+ /*!
+ * Metoda zwracajaca wspolrzene srodka drona.
+ */
  Vector3D get_center() const;
+ /*!
+ * Metoda zwracajaca "Wykryto element powierzchni typu: Dron", gdy zostala wykryta kolizja z dronem. 
+ */
+ std::string get_name() const
+  {
+    return "Wykryto element powierzchni typu: Dron";
+  }
+  /*!
+ * Metoda zwracaja promien drona.
+ */
+  double radius();
 }; 

@@ -3,8 +3,8 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include "Block.hpp"
 #include "lacze_do_gnuplota.hpp"
+#include "Prism.hpp"
 #include "Dron.hpp"
 #include "Surface.hpp"
 #include "Plateau.hpp"
