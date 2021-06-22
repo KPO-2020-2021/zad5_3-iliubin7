@@ -127,13 +127,13 @@ int get_id()
  */
  Vector3D get_center() const;
  /*!
- * Metoda zwracajaca "Wykryto element powierzchni typu: Dron", gdy zostala wykryta kolizja z dronem. 
+ * Metoda zwracajaca nazwe drona (plik).
  */
  std::string get_name() const
   {
-    return "Wykryto element powierzchni typu: Dron";
+    return "Dron: ";
   }
-  /*!
+/*!
  * Metoda zwracaja promien drona.
  */
   double radius();

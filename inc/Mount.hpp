@@ -32,4 +32,8 @@ Mount &operator=(const Mount &other)
      name=other.name;
      return *this;
     }
+/*!
+* Metoda zwracaja promien dla gory ze szczytem.
+*/
+double radius();
 };

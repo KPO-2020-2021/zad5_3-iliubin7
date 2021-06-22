@@ -61,3 +61,8 @@ Mount::Mount( Mount& pr )
   center=pr.center;
   name=pr.name;
 }
+
+double Mount::radius()
+{
+  return (*sizes_of_block)[2];
+}

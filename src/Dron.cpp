@@ -247,7 +247,6 @@ void Dron::control(std::list<std::shared_ptr<Scene_object>> &List_of_elements)
             Lacze.Rysuj();
             usleep(TIME);
         }
-   
         for (std::list<std::shared_ptr<Scene_object>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
         {
             copy = orginal;
