@@ -80,7 +80,7 @@
       a++;
     }
     
-    (*a)->control();
+    (*a)->control(List_of_elements);
   }
   break;
   case 'd':

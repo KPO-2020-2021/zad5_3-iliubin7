@@ -89,7 +89,7 @@ public:
   * Metoda kontroli nad dronem(wybieramy odpowiednie opcje przesuniecia lub obrotu i 
   * podajemy odpowiednio dlugosc lotu lub kierunek lotu(podajemy jako kat w stopniach)))
   */
-  void control();
+  void control(std::list<std::shared_ptr<Scene_object>> &List_of_elements);
   /*! 
   * Metoda okreslenia drogi drona.
   */

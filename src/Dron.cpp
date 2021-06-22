@@ -197,7 +197,7 @@ void Dron::way_by_circle(double r)
        Lacze.UsunNazwePliku("../datasets/way.dat");
 }
 
-void Dron::control()
+void Dron::control(std::list<std::shared_ptr<Scene_object>> &List_of_elements)
 {
     double way;
     double angle;
@@ -213,6 +213,7 @@ void Dron::control()
     switch (op)
     {
     case 'p':
+    {
         cout << "podaj dlugosc lotu: ";
         cin >> way;
         def_way(way, angle);
@@ -232,7 +233,9 @@ void Dron::control()
             */
             usleep(TIME);
         }
-
+        bool collision = false;
+    while(true)
+    {
         for (int i = 0; i < way; i++)
         {
             copy = orginal;
@@ -244,7 +247,27 @@ void Dron::control()
             Lacze.Rysuj();
             usleep(TIME);
         }
-
+   
+        for (std::list<std::shared_ptr<Scene_object>>::const_iterator a = List_of_elements.begin(); a != List_of_elements.end(); a++)
+        {
+            copy = orginal;
+            lifting(-100);
+            if(check_collision(*a))
+            {
+                    cout << (*a)->get_name() << endl;
+                    collision = true;
+                }
+                copy = orginal;
+                lifting(100);
+        }
+        if (!collision)
+            {
+                break;
+            }
+            collision = false;
+            way = 40;
+            def_way(way, 360);
+         }
         for (int i = 0; i < 100; i++)
         {
             copy = orginal;
@@ -257,6 +280,7 @@ void Dron::control()
             usleep(TIME);
         }
     Lacze.UsunNazwePliku("../datasets/way.dat");
+    }
         break;
     case 'o':
         cout << "podaj kierunek lotu (kat w stopniach): ";
