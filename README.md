@@ -1,4 +1,13 @@
 
+![Class diagram](/diagram5_3.png)
+
+## Dokumentacja
+``` text
+
+Dokumentacja znajduje sie w pliku documentation.
+
+```
+
 ## Building
 
 Build by making a build directory (i.e. `build/`), run `cmake` in that dir, and then use `make` to build the desired target.
